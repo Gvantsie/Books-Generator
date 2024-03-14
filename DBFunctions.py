@@ -56,7 +56,7 @@ def get_avg_pages(table_name):
     conn = sqlite3.connect("books")
     c = conn.cursor()
 
-    c.execute(f"SELECT AVG(pages_number) FROM {table_name}")
+    c.execute(f'SELECT AVG(pages_number) FROM {table_name}')
     items = c.fetchall()
     conn.close()
 
@@ -67,7 +67,7 @@ def get_max_page(table_name):
     conn = sqlite3.connect("books")
     c = conn.cursor()
 
-    c.execute(f"SELECT rowid, * FROM {table_name} ORDER BY pages_number DESC LIMIT 1")
+    c.execute(f'SELECT title, pages_number FROM {table_name} ORDER BY pages_number DESC LIMIT 1') 
     row = c.fetchall()
     conn.close()
 
@@ -78,7 +78,7 @@ def get_min_page(table_name):
     conn = sqlite3.connect("books")
     c = conn.cursor()
 
-    c.execute(f"SELECT rowid, * FROM {table_name} ORDER BY pages_number ASC LIMIT 1")
+    c.execute(f'SELECT title, pages_number FROM {table_name} ORDER BY pages_number ASC LIMIT 1')  
     row = c.fetchall()
     conn.close()
 
