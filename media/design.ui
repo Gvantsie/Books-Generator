@@ -1,1 +1,225 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(245, 232, 221);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>50</y>
+      <width>681</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 18pt &quot;MS Sans Serif&quot;;
+color: rgb(235, 171, 188);
+border:1,2px solid rgba(0, 0, 0, 0);
+border-color: rgb(227, 189, 198);
+border-style: ridge;
+border-bottom-color: rgb(221, 163, 172);
+</string>
+    </property>
+    <property name="text">
+     <string>--Generator For Reading Lovers--</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>160</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Sans Serif&quot;;
+border:1px solid rgba(0, 0, 0, 0);
+color: rgb(120, 160, 131);
+border-color: rgb(227, 189, 198);
+border-style: ridge;
+border-bottom-color: rgb(106, 141, 115);</string>
+    </property>
+    <property name="text">
+     <string>How many books do you want to generate?</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>230</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Sans Serif&quot;;
+border:1px solid rgba(0, 0, 0, 0);
+color: rgb(120, 160, 131);
+border-color: rgb(227, 189, 198);
+border-style: ridge;
+border-bottom-color: rgb(106, 141, 115);</string>
+    </property>
+    <property name="text">
+     <string>What do you searching for?</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="number_of_books">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>160</y>
+      <width>321</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Sans Serif&quot;;
+border:1px solid rgba(0, 0, 0, 0);
+color: rgb(120, 160, 131);
+border-color: rgb(227, 189, 198);
+border-style: ridge;
+border-bottom-color: rgb(106, 141, 115);</string>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::PlusMinus</enum>
+    </property>
+    <property name="specialValueText">
+     <string> </string>
+    </property>
+    <property name="prefix">
+     <string> </string>
+    </property>
+    <property name="maximum">
+     <number>500</number>
+    </property>
+    <property name="singleStep">
+     <number>5</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="wish">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>230</y>
+      <width>321</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Sans Serif&quot;;
+border:1px solid rgba(0, 0, 0, 0);
+color: rgb(120, 160, 131);
+border-color: rgb(227, 189, 198);
+border-style: ridge;
+border-bottom-color: rgb(106, 141, 115);</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+    <property name="currentIndex">
+     <number>-1</number>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>Average Number Of Pages</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Book With Maximum Number Of Pages</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Book With Minimum Number Of Pages</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>310</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(244, 211, 218);
+color: rgb(80, 114, 123);
+font: 12pt &quot;MS Sans Serif&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Generate</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>410</y>
+      <width>681</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(235, 171, 188);
+font: 12pt &quot;MS Sans Serif&quot;;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
