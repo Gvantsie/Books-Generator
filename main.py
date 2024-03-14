@@ -6,13 +6,13 @@ import DBFunctions as DatabaseFunctions
 from concurrent.futures import ThreadPoolExecutor
 import requests
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         loadUi("media/design.ui", self)
         self.pushButton.clicked.connect(self.generate_books)
         self.fetched_books = []  # store fetched books data
-
 
     @staticmethod
     def fetch_book_data(Id):
@@ -43,14 +43,12 @@ class MainWindow(QMainWindow):
             print(f"Failed to fetch data for product {Id}. Status code: {response.status_code}")
             return None
 
-
     def generate_books(self):
         number_of_books = self.number_of_books.value()
 
         # clear fetched_books list whenever the number of books changes
         if len(self.fetched_books) != number_of_books:
             self.fetched_books.clear()
-
 
         if not self.fetched_books:  # fetch books only if not fetched already
             number_of_books = self.number_of_books.value()
@@ -77,7 +75,7 @@ class MainWindow(QMainWindow):
                               data['title'],
                               data['pages'],
                               "",
-                              self.concatenate_array(data['genres']))
+                              ', '.join(data['genres']))
                 if DatabaseFunctions.check_book_exists(table_name='books_table',
                                                        title=data['title'],
                                                        first_name=data['author_first_name'],
@@ -94,37 +92,31 @@ class MainWindow(QMainWindow):
         }
 
         if wish_index in wish_options:
-            output_message = wish_options[wish_index](self.fetched_books)
+            output_message = wish_options[wish_index](table_name)
 
         self.label_4.setText(output_message)
 
-
+    # get output messages
     @staticmethod
-    def concatenate_array(arr):
-        new_str = ''
-        for string in arr:
-            new_str += string
-            new_str += " "
-        return new_str
+    def get_average_pages_num(table_name):
+        items = DatabaseFunctions.get_avg_pages(table_name)
+        average_pages = items[0][0] if items and items[0][0] is not None else 0
+        return f'Average Number Of Pages\n{int(average_pages)} pages'
 
 
     @staticmethod
-    def get_average_pages_num(books):
-        all_pages = sum(book['pages'] for book in books)
-        average_pages = all_pages / len(books) if books else 0
-        return f'Average Number Of Pages\n{int(average_pages)}'
-
-
-    @staticmethod
-    def get_max_page_book(books):
-        max_book = max(books, key=lambda x: x['pages'])
-        return f'Book With Maximum Number Of Pages\n{max_book["title"]}, {max_book["pages"]} pages'
-
+    def get_max_page_book(table_name):
+        row = DatabaseFunctions.get_max_page(table_name)
+        max_book = row[0][0]
+        max_pages = row[0][1]
+        return f'Book With Maximum Number Of Pages\n{max_book}, {max_pages} pages'
 
     @staticmethod
-    def get_min_page_book(books):
-        min_book = min(books, key=lambda x: x['pages'])
-        return f'Book With Minimum Number Of Pages\n{min_book["title"]}, {min_book["pages"]} pages'
+    def get_min_page_book(table_name):
+        row = DatabaseFunctions.get_min_page(table_name)
+        min_book = row[0][0]
+        min_pages = row[0][1]
+        return f'Book With Minimum Number Of Pages\n{min_book}, {min_pages} pages'
 
 
 if __name__ == "__main__":
